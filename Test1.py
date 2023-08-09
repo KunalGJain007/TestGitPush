@@ -1,15 +1,13 @@
-import pymongo
-client = pymongo.MongoClient("mongodb+srv://kunalgjainds:AsGfmvzg01BCEk8R@cluster0.7azhjni.mongodb.net/?retryWrites=true&w=majority")
-db = client.test
-print(db)
+from pymongo.mongo_client import MongoClient
 
-d = {
-    "name" : "kunal",
-    "mail" : "kunal@gmail.com",
-    "surname" : "jain",
-     }
+uri = "mongodb+srv://kunalgjainds:Kunal123@cluster0.jjui4ly.mongodb.net/?retryWrites=true&w=majority"
 
-k = [9,18,27,36,45]
-db1 = client['mongotest']
-coll = db1['test']
-coll.insert_one(d)
+# Create a new client and connect to the server
+client = MongoClient(uri)
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
